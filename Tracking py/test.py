@@ -1,0 +1,69 @@
+from flask import Flask, render_template, Response
+import cv2
+import torch
+import sys
+import json
+import ast
+import numpy as np
+from tracker import *
+
+app = Flask(__name__)
+
+
+
+model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+
+
+cap=cv2.VideoCapture('highway.mp4')
+
+count=0
+tracker = Tracker()
+
+
+def POINTS(event, x, y, flags, param):
+    if event == cv2.EVENT_MOUSEMOVE :  
+        colorsBGR = [x, y]
+        print(colorsBGR)
+        
+
+cv2.namedWindow('FRAME')
+cv2.setMouseCallback('FRAME', POINTS)
+
+area1=[(410,378),(52, 584),(1014, 567),(710,368)]
+area_1=set()
+
+while True:
+    ret,frame=cap.read()
+    if not ret:
+        break
+    count += 1
+    if count % 3 != 0:
+        continue
+    frame=cv2.resize(frame,(1020,600))
+    results=model(frame)
+    lis=[]
+    for index,rows in results.pandas().xyxy[0].iterrows():
+        x=int(rows[0])
+        y=int(rows[1])
+        x1=int(rows[2])
+        y1=int(rows[3])
+        b=str(rows['name'])
+        lis.append([x,y,x1,y1])
+    idx_bbox=tracker.update(lis)
+    for bbox in idx_bbox:
+        x2,y2,x3,y3,id=bbox
+        cv2.rectangle(frame,(x2,y2),(x3,y3),(0,0,255),2)
+        cv2.circle(frame,(x3,y3),3,(0,255,0),-1)
+        result=cv2.pointPolygonTest(np.array(area1,np.int32),(x3,y3),False)
+        if result > 0:
+            area_1.add(id)
+        
+        
+    cv2.polylines(frame,[np.array(area1,np.int32)],True,(0,255,225),2)
+    co=len(area_1)
+    cv2.imshow("FRAME",frame)
+    if cv2.waitKey(1)&0xFF==ord('q'):
+        break
+    
+cap.release()
+cv2.destroyAllWindows()

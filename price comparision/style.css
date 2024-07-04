@@ -1,0 +1,88 @@
+body{
+    font-family: Roboto;
+}
+.bus-no-container{
+    margin: 10px;
+    width: 200px;
+}
+.bus-name-container{
+    margin: 10px;
+    width: 400px;
+}
+.price-container{
+    margin: 10px;
+    width: 200px;
+}
+.apsrtc-box-container{
+    width: 800px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 30px;
+    padding-top: 0px;
+    border-radius: 10px;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.apsrtc-container{
+    border-bottom-style: solid;
+    border-width: 1px;
+    padding:5%;
+    transition: all 0.5s ease-in-out;
+}
+
+.apsrtc-container:hover{
+    background-color: #174ea6;
+    color: white!important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.05);
+    background-color: #174ea6;
+    border-radius: 10px;
+}
+.bus-no-heading{
+    font-size: 20px;
+    color: rgb(110, 199, 255);
+}
+.bus-no{
+    font-size: 50px;
+}
+.bus-name-container{
+
+}
+.bus-name-heading{
+    font-size: 20px;
+    color: rgb(73, 185, 255);
+}
+.bus-name{
+    font-size: 30px;
+}
+.price-heading{
+    font-size: 20px;
+    color: rgb(73, 185, 255);
+}
+.price{
+    font-size: 30px;
+}
+.vehicle-recommendation-heading{
+    font-size: 30px;
+    font-family: roboto;
+}
+.main-container{
+    background-image: url('https://res.cloudinary.com/dbtkas8kr/image/upload/v1692946961/tinywow_remove_text_photo_32564991_j3tvgq.png');
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    font-family: sans-serif;
+    color: white!important;
+}
+.nav-image{
+    height: 50px;
+    width: 50px;
+}
+.view-button{
+    color: white;
+    background-color: #ed7d2b;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    border-style: none;
+}

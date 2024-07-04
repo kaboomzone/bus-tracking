@@ -1,0 +1,29 @@
+#map {
+	margin: 10px;
+	padding: 0;
+    border-radius: 10px;
+}
+.search-container{
+
+}
+.search-box{
+    width: 80vw;
+    height: 50px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: aliceblue;
+    padding: 10px;
+    
+    outline: none;
+}
+.search-results-container{
+    background-color: white;
+
+}
+.top-container{
+    margin: 10px;
+    margin-bottom: 0px;
+}
+#dropdownMenuButton{
+    height: 50px;
+}
